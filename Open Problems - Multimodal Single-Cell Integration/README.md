@@ -71,8 +71,43 @@ The goal of this competition is to **predict how DNA, RNA, and protein measurem
  ## Evaluation Metric
  
  - Predictions are ranked using the **`Pearson correlation coefficient`**
- - The overall score is the **average** of each sample's correlation score.
+ - The overall score is the **average** of each sample's correlation score, larger the score better the predictions
  - If a sample's predictions are **all the same**, that sample is **scored as -1.0**
 <img src="https://github.com/ryanluoli1/Kaggle-Competitions/blob/main/Open%20Problems%20-%20Multimodal%20Single-Cell%20Integration/Images/2.png" alt="Alt text" width="500"/>
  
+
+## Solution
+
+- **`Task 1: (CITEseq)`**:
+    - Feature Engineering:
+        - **gene name matching**, remove duplicate columns and generate important columns (important_cols)
+        - apply **truncated SVD** to reduce the dimensions from 22050 to 512
+        - **normalize** the input data
+    - Blended 3 different models:
+        - **`LightGBM`**: LightGBM + MultiOutputRegressor, hyperparameter tuning with **scikit-optimize**
+        - **`Gated Recurrent Unit`**: trained 2 different GRUs with different dense layers, gaussian dropout and concatenate layers
+        - Used **RMSE** and **correlation** as loss functions and the **Adam optimizer** to train the GRUs, tuning hyperparameters with **Optuna**
+ <img src="https://github.com/ryanluoli1/Kaggle-Competitions/blob/main/Open%20Problems%20-%20Multimodal%20Single-Cell%20Integration/Images/3.png" alt="Alt text" width="500"/>
  
+- **`Task 2: (Multiome)`**:
+    - Feature Engineering 1:
+        - dimension reduction with **truncated SVD**
+        - normalization
+        - selected the top 64 most infomrative features
+     - Feature Engineering 2:
+        - normalization
+        - applied p2 regulaization and log1p transformation
+        - dimension reduction with **truncated SVD**
+        - normalizatiopn
+        - selected the top 100 most infomrative features
+    - Trained 2 different MLPs:
+        - **`Multilayer Perceptron`**: GULU can be seen as the combination of dropout and RELU, it introduces randomness to the activation functions and makes the model more robust
+        - the two feature engineering strategies capture different information from the original data and we can obtain more generalized predictions by blending the two MLPs
+ <img src="https://github.com/ryanluoli1/Kaggle-Competitions/blob/main/Open%20Problems%20-%20Multimodal%20Single-Cell%20Integration/Images/4.png" alt="Alt text" width="350"/>
+
+
+## Model Evaluation
+
+Devised a **`cross-validation`** strategy (for offline evlaution) that mimics the situtaions when evluating the models against the public and private test sets:
+- public: evaluating the models' performance on a **new donor** 
+- private: evaluating the models' performance on a **new time point** 
