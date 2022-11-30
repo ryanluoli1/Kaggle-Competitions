@@ -9,12 +9,14 @@ Link: https://www.kaggle.com/competitions/open-problems-multimodal
 - The goal of this competition is to **predict how DNA, RNA, and protein measurements co-vary in single cells** as bone marrow stem cells develop into more mature blood cells.
 - The **chromatin accessibility** (DNA), **gene expression** (RNA) and **protein levels** are the **single-cell modalities** measured and to be predicted.
 
-## Data and Tasks
+## Data
 - The datasets consist of the **modalities measurements of cells** donated by **four healthy human** which were measured using **two different test kits** (CITEseq and Multiome) at **five time points** (day 2,3,4,7,10):
     - the **Multiome kit** measures **chromatin accessibility** (DNA) and gene expression (**RNA**)
     - the **CITEseq kit** measures gene expression (**RNA**) and **surface protein levels**
+- The split between **training** and **test** sets:
+<img src="https://github.com/ryanluoli1/Kaggle-Competitions/blob/main/Open%20Problems%20-%20Multimodal%20Single-Cell%20Integration/Images/1.png" alt="Alt text" width="600"/>
+
+## Tasks
 - Following the central dogma of molecular biology (**DNA->RNA->Protein**), the tasks of this competition are:
     - for the **Multiome** samples: given chromatin accessibility, **predict RNA**
     - for the **CITEseq** samples: given RNA, **predict protein levels**
-
-##
