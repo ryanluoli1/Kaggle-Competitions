@@ -111,3 +111,13 @@ The goal of this competition is to **predict how DNA, RNA, and protein measurem
 Devised a **`cross-validation`** strategy (for offline evlaution) that mimics the situtaions when evluating the models against the public and private test sets:
 - public: evaluating the models' performance on a **new donor** 
 - private: evaluating the models' performance on a **new time point** 
+
+
+## Codes
+
+- **Feature Engineering (CITEseq)**: feature engineering for the CITEseq samples
+- **LightGBM (CITEseq)**: training the LightGBM model used to predict protein levels based on the CITEseq samples
+- **GRU (CITEseq)**: training the GRU models used to predict protein levels based on the CITEseq samples
+- **Feature Engineering (Multiome)**: feature engineering for the Multiome samples
+- **MLP (CITEseq)**: training the MLP model used to predict gene expressions based on the Multiome samples
+- **Blending**: blending the results of the models and combine the blended predictions into a single csv file
