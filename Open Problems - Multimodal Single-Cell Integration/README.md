@@ -119,5 +119,5 @@ Devised a **`cross-validation`** strategy (for offline evlaution) that mimics th
 - **LightGBM (CITEseq)**: training the LightGBM model used to predict protein levels based on the CITEseq samples
 - **GRU (CITEseq)**: training the GRU models used to predict protein levels based on the CITEseq samples
 - **Feature Engineering (Multiome)**: feature engineering for the Multiome samples
-- **MLP (CITEseq)**: training the MLP model used to predict gene expressions based on the Multiome samples
+- **MLP (Multiome)**: training the MLP model used to predict gene expressions based on the Multiome samples
 - **Blending**: blending the results of the models and combine the blended predictions into a single csv file
