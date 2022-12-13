@@ -3,7 +3,7 @@
 This repository contains my solutions to the **featured competitions on Kaggle** I had competed in. Each folder corresponds to a competition.
 
 
-## List of Competitions (to be continue...)
+## List of Competitions (to be continued...)
 
 - **[Feedback Prize - English Language Learning](https://www.kaggle.com/competitions/feedback-prize-english-language-learning) (2022.11)**
 
