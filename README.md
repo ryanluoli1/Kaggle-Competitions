@@ -1,4 +1,4 @@
-# Kaggle-Competitions
+# Kaggle Competitions
 
 This repository contains my solutions to the **featured competitions on Kaggle** I had competed in. Each folder corresponds to a competition.
 
