@@ -18,7 +18,7 @@ This repository contains my solutions to the **featured competitions on Kaggle**
   - Techniques used: Truncated SVD, LightGBM, GRU, MLP
 
 - **[Feedback Prize - Predicting Effective Arguments](https://www.kaggle.com/competitions/feedback-prize-effectiveness) (2022.08)**
-- 
+ 
   - Achievements: Silver Medal, Top 4%
   - Competition Type: Regression, NLP
   - Techniques used: 
