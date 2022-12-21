@@ -25,7 +25,7 @@ This repository contains my solutions to the **featured competitions on Kaggle**
 
 - **[American Express - Default Prediction](https://www.kaggle.com/competitions/amex-default-prediction) (2022.08)**
   
-  - Achievements: Bronze Medal, Top 7%
+  - Achievements: Silver Medal, Top 2%
   - Competition Type: Classification, Data Mining, Financial Risk Management
   - Techniques used: Null Importance, SMOTE, Pseudo Labelling, LightGBM, XGBoost
 
