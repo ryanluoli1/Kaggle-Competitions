@@ -47,7 +47,7 @@ The **features** are monthly customer profile data:
 - **B Variables**: Balance
 - **R Variables**: Risk 
 
-However, we notice the following:
+We notice the following:
 
 - around **20%** of the customers in the training set have **less than 13 entries** of behavioural data (might be **new customers**)
 - the **last entry** in the training has date 2018.03 but the last entry in the test set has date 2019.04 (they are **not fully overlapped**)
@@ -56,3 +56,51 @@ However, we notice the following:
 
 ## Feature Engineering Strategies
 
+To better capture the information of customers, we engineered over **2000 new features** (experiments were carried out to ensure that this amount would not lead to too much **overfitting**).
+
+In total, we devised **3 unique** feature engineering strategies for training different sets of models.
+
+- **`Strategy 1`**:
+
+  **Group** the time-series behavioural data of each customer and make calculations. We did the following:
+
+    - delete **invalid and ineffective** features
+    - **P-S-B features**: manipulating the payment (P), spend (S) and balance (B) features
+    - **time-series features**: mean, std, min, max, diff, nunqiue, last, count, lag etc.
+
+- **`Strategy 2`**:
+
+  Similar to strategy 1 but using a different combinations of time-series features to overcome overfitting.
+
+- **`Strategy 3`**:
+
+  We adopted the **meta feature method** where we labelled all the single entries for a customer with the same label and train without grouping.
+
+
+## Other Techniques
+
+- **Pseudo Labelling**:
+
+  We labelled the **highest-ranked 4%** predictions with $y=1$ and the **lowest-ranked 4%** predictions with $y=0$. Then, we add these **pseudo-labelled** data to the training set and retrained the models.
+  
+- **Null Importance**:
+
+  We applied the **null importance** method for feature selection to prevent redundancy. To do so, we **randomly shuffled** the labels and examined the changes in feature importance given by a tree model.
+
+
+## Models
+
+We tried the following models:
+
+- Logistic Regression
+- Support Vector Machine
+- Rnadom Forest
+- LightGBM
+- XGBoost
+- Catboost
+- Multi-layer Perceptron
+- TabNet
+- LSTM
+- Transformer
+
+We ended up with two top-performing models: **LightGBM** and **XGBoost**. We trained 4 different LightGBM and 2 different XGBoost models with our feature engineering strategies. Finally, we **blended** the predictions of the models with a simple **lienar weighted sum** method based on their cross-validation scores.
